@@ -1,0 +1,71 @@
+<div class="card my-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #cursoForm="ngForm">
+        <div class="form-group">
+          <label for="descricao">Assunto</label>
+          <input type="text" [(ngModel)]="curso.descricao" 
+            class="form-control" 
+            id="descricao" 
+            maxlength="100" 
+            name="descricao" 
+            placeholder="Digite o assunto"
+            required #descricao="ngModel">
+        </div>
+        <div *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)"
+          class="alert alert-danger">
+          Informar assunto do curso.
+        </div>
+            
+        <div class="form-group">
+          <label for="dataInicio">Data Início</label>
+          <input type="date" [(ngModel)]="curso.dataInicio" 
+            class="form-control" 
+            id="dataInicio" 
+            name="dataInicio" 
+            placeholder="digite a data de início do curso"
+            required #dataInicio="ngModel">
+        </div>
+        <div *ngIf="dataInicio.invalid && (dataInicio.dirty || dataInicio.touched)"
+          class="alert alert-danger">
+          Informar a data início do curso
+        </div>
+        
+
+        <div class="form-group">
+          <label for="dataTermino">Data Término</label>
+          <input type="date" [(ngModel)]="curso.dataTermino" 
+            class="form-control" 
+            id="dataTermino" 
+            name="dataTermino" 
+            placeholder="digite a data de término do curso"
+            required #dataTermino="ngModel">
+        </div>
+        <div *ngIf="dataTermino.invalid && (dataTermino.dirty || dataTermino.touched)"
+          class="alert alert-danger">
+          Informar a data término do curso
+        </div>
+        
+        <div class="form-group">
+          <div class="col-md-06">
+            <label for="categorias">Categoria</label>
+            <select [(ngModel)]="curso.idCategoria" id="categoria" name="categoria" class="form-control" required
+              #idCategoria="ngModel">
+              <option *ngFor="let categoria of categorias; let i = index" [value]="categorias[i].id">
+                {{categorias[i].descricao}}
+              </option>
+            </select>
+          </div>
+        
+          <div class="col-md-06">
+            <label for="quantidadeAlunos">Quantidade de Alunos</label>
+            <input type="number" [(ngModel)]="curso.quantidadeAlunos" class="form-control" id="quantidadeAlunos" maxlength="3"
+              name="quantidadeAlunos" placeholder="digite a quantidade de alunos do curso">
+          </div>
+        
+        </div>
+
+        <button type="submit" [disabled]="!cursoForm.form.valid" 
+          class="btn btn-success">Gravar</button>
+      </form>
+    </div>
+  </div>

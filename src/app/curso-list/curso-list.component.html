@@ -1,0 +1,20 @@
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Assunto</th>
+            <th scope="col">Data Início</th>
+            <th scope="col">Data Término</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let curso of cursos">
+            <td>{{ curso.descricao }}</td>
+            <td>{{ curso.dataInicio | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ curso.dataTermino | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
